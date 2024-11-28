@@ -139,8 +139,10 @@ public class Resumen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
+        HistoricoPedidos hPedidos = new HistoricoPedidos();
+        hPedidos.almacenarPedido(pedido);
         System.out.println("Pedido enviado con las siguientes caracteristicas: ");
-        this.pedido.pedidoToString();
+        this.pedido.pedidoToString();        
         this.dispose();
     }//GEN-LAST:event_btnConfirmarActionPerformed
 

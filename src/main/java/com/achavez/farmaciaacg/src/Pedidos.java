@@ -38,6 +38,7 @@ public class Pedidos extends javax.swing.JFrame {
         lbNombreFarmacia1 = new javax.swing.JLabel();
         lbNombreFarmacia2 = new javax.swing.JLabel();
         lbNombreFarmacia4 = new javax.swing.JLabel();
+        btnHistorico = new javax.swing.JButton();
         lbTituloPanel = new javax.swing.JLabel();
         lbNombreMedicamento = new javax.swing.JLabel();
         lbTipoMedicamento = new javax.swing.JLabel();
@@ -89,6 +90,15 @@ public class Pedidos extends javax.swing.JFrame {
         lbNombreFarmacia4.setText("Alexander");
         lbNombreFarmacia4.setToolTipText("");
 
+        btnHistorico.setBackground(new java.awt.Color(204, 204, 0));
+        btnHistorico.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnHistorico.setText("Historico");
+        btnHistorico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistoricoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout lateralIzqLayout = new javax.swing.GroupLayout(lateralIzq);
         lateralIzq.setLayout(lateralIzqLayout);
         lateralIzqLayout.setHorizontalGroup(
@@ -102,6 +112,10 @@ public class Pedidos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lbNombreFarmacia4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(lateralIzqLayout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(btnHistorico, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         lateralIzqLayout.setVerticalGroup(
             lateralIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +128,9 @@ public class Pedidos extends javax.swing.JFrame {
                 .addComponent(lbNombreFarmacia4)
                 .addGap(18, 18, 18)
                 .addComponent(lbNombreFarmacia2)
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnHistorico, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         Background.add(lateralIzq, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 450));
@@ -170,7 +186,7 @@ public class Pedidos extends javax.swing.JFrame {
                 btnBorrarActionPerformed(evt);
             }
         });
-        Background.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, 130, 40));
+        Background.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 130, 40));
 
         btnConfirmar.setBackground(new java.awt.Color(43, 79, 43));
         btnConfirmar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -181,7 +197,7 @@ public class Pedidos extends javax.swing.JFrame {
                 btnConfirmarActionPerformed(evt);
             }
         });
-        Background.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 320, 130, 40));
+        Background.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, 130, 40));
 
         tfNombreMedicamento.setBackground(new java.awt.Color(171, 178, 185));
         tfNombreMedicamento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -349,6 +365,12 @@ public class Pedidos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tfCantidadSolicitadaKeyTyped
 
+    private void btnHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoricoActionPerformed
+        // TODO add your handling code here:
+        ListaPedidos lPedidos = new ListaPedidos();
+        lPedidos.setVisible(true);
+    }//GEN-LAST:event_btnHistoricoActionPerformed
+
     private void clearForm(){
         tfNombreMedicamento.setText("");
         cbxTipoMedicamento.setSelectedIndex(-1);
@@ -397,6 +419,7 @@ public class Pedidos extends javax.swing.JFrame {
     private javax.swing.JPanel Background;
     private javax.swing.JButton btnBorrar;
     private javax.swing.JButton btnConfirmar;
+    private javax.swing.JButton btnHistorico;
     private javax.swing.JComboBox<String> cbxTipoMedicamento;
     private javax.swing.JCheckBox chbPrincipal;
     private javax.swing.JCheckBox chbSecundaria;

@@ -4,6 +4,11 @@
  */
 package com.achavez.farmaciaacg.src;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 /**
  *
  * @author delph
@@ -15,6 +20,35 @@ public class ListaPedidos extends javax.swing.JFrame {
      */
     public ListaPedidos() {
         initComponents();        
+        llenarTabla();
+    }
+    
+    public void llenarTabla(){
+        DefaultTableModel tblModelo = new DefaultTableModel();
+        tblModelo.addColumn("Nombre");
+        tblModelo.addColumn("Tipo");
+        tblModelo.addColumn("Cantidad");
+        tblModelo.addColumn("Distribuidor");
+        tblModelo.addColumn("Sucursal principal");
+        tblModelo.addColumn("Sucursal secundaria");
+        
+        tblPedidos.setModel(tblModelo);
+        
+        HistoricoPedidos historico = new HistoricoPedidos();
+        JSONArray data = historico.cargarTabla();
+        int dataSize = data != null ? data.length() : 0;
+        for(int i = 0; i < dataSize; i++){
+            JSONObject objJson = data.getJSONObject(i);
+            Object[] fila = new Object[6];
+            fila[0] = objJson.get("nombre");
+            fila[1] = objJson.get("tipo");
+            fila[2] = objJson.get("cantidad");
+            fila[3] = objJson.get("distribuidor");
+            fila[4] = objJson.get("dir1");
+            fila[5] = objJson.get("dir2");
+            
+            tblModelo.addRow(fila);
+        }
     }
 
     /**
@@ -30,8 +64,10 @@ public class ListaPedidos extends javax.swing.JFrame {
         lbTitulo = new javax.swing.JLabel();
         spTabla = new javax.swing.JScrollPane();
         tblPedidos = new javax.swing.JTable();
+        btnVolver = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -46,6 +82,25 @@ public class ListaPedidos extends javax.swing.JFrame {
         tblPedidos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         spTabla.setViewportView(tblPedidos);
 
+        btnVolver.setBackground(new java.awt.Color(204, 204, 0));
+        btnVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setBackground(new java.awt.Color(79, 43, 43));
+        btnLimpiar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(255, 37, 2));
+        btnLimpiar.setText("Eliminar historico de pedidos");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout BackgroundLayout = new javax.swing.GroupLayout(Background);
         Background.setLayout(BackgroundLayout);
         BackgroundLayout.setHorizontalGroup(
@@ -55,7 +110,12 @@ public class ListaPedidos extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(BackgroundLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(spTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 839, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(BackgroundLayout.createSequentialGroup()
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 839, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         BackgroundLayout.setVerticalGroup(
@@ -65,7 +125,11 @@ public class ListaPedidos extends javax.swing.JFrame {
                 .addComponent(lbTitulo)
                 .addGap(18, 18, 18)
                 .addComponent(spTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 430));
@@ -75,6 +139,19 @@ public class ListaPedidos extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        int opcion = JOptionPane.showOptionDialog(null, "¿Confirma la eliminación de todo el historico de pedidos?", "Limipar historico", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[] { "Cancelar", "Confirmar"}, "Cancelar");
+        if(opcion == 1){
+            HistoricoPedidos hPedidos = new HistoricoPedidos();
+            hPedidos.limpiarArchivo();
+            llenarTabla();
+        }
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,6 +190,8 @@ public class ListaPedidos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Background;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel lbTitulo;
     private javax.swing.JScrollPane spTabla;
     private javax.swing.JTable tblPedidos;
