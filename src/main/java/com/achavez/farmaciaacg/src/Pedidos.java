@@ -170,7 +170,7 @@ public class Pedidos extends javax.swing.JFrame {
                 btnBorrarActionPerformed(evt);
             }
         });
-        Background.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, 100, 40));
+        Background.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, 130, 40));
 
         btnConfirmar.setBackground(new java.awt.Color(43, 79, 43));
         btnConfirmar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -181,7 +181,7 @@ public class Pedidos extends javax.swing.JFrame {
                 btnConfirmarActionPerformed(evt);
             }
         });
-        Background.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, 100, 40));
+        Background.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 320, 130, 40));
 
         tfNombreMedicamento.setBackground(new java.awt.Color(171, 178, 185));
         tfNombreMedicamento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -191,8 +191,7 @@ public class Pedidos extends javax.swing.JFrame {
 
         cbxTipoMedicamento.setBackground(new java.awt.Color(171, 178, 185));
         cbxTipoMedicamento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cbxTipoMedicamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "analgésico", "analéptico", "anestésico", "antiácido", "antidepresivo", "antibióticos" }));
-        cbxTipoMedicamento.setSelectedIndex(-1);
+        cbxTipoMedicamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione --", "analgésico", "analéptico", "anestésico", "antiácido", "antidepresivo", "antibióticos" }));
         cbxTipoMedicamento.setPreferredSize(new java.awt.Dimension(64, 23));
         Background.add(cbxTipoMedicamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 440, 30));
 
@@ -207,6 +206,7 @@ public class Pedidos extends javax.swing.JFrame {
         });
         Background.add(tfCantidadSolicitada, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 440, 30));
 
+        rdbCofarma.setBackground(new java.awt.Color(44, 62, 80));
         rdbGroupDistribuidor.add(rdbCofarma);
         rdbCofarma.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rdbCofarma.setForeground(new java.awt.Color(213, 216, 220));
@@ -218,6 +218,7 @@ public class Pedidos extends javax.swing.JFrame {
         });
         Background.add(rdbCofarma, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, -1, -1));
 
+        rdbEmpsephar.setBackground(new java.awt.Color(44, 62, 80));
         rdbGroupDistribuidor.add(rdbEmpsephar);
         rdbEmpsephar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rdbEmpsephar.setForeground(new java.awt.Color(213, 216, 220));
@@ -229,6 +230,7 @@ public class Pedidos extends javax.swing.JFrame {
         });
         Background.add(rdbEmpsephar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 240, -1, -1));
 
+        rdbCemefar.setBackground(new java.awt.Color(44, 62, 80));
         rdbGroupDistribuidor.add(rdbCemefar);
         rdbCemefar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rdbCemefar.setForeground(new java.awt.Color(213, 216, 220));
@@ -240,6 +242,7 @@ public class Pedidos extends javax.swing.JFrame {
         });
         Background.add(rdbCemefar, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 240, -1, -1));
 
+        chbPrincipal.setBackground(new java.awt.Color(44, 62, 80));
         chbPrincipal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         chbPrincipal.setForeground(new java.awt.Color(242, 242, 242));
         chbPrincipal.setText("Principal");
@@ -250,6 +253,7 @@ public class Pedidos extends javax.swing.JFrame {
         });
         Background.add(chbPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 280, -1, -1));
 
+        chbSecundaria.setBackground(new java.awt.Color(44, 62, 80));
         chbSecundaria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         chbSecundaria.setForeground(new java.awt.Color(242, 242, 242));
         chbSecundaria.setText("Secundaria");
@@ -277,8 +281,8 @@ public class Pedidos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
-        int opcion = JOptionPane.showConfirmDialog(null, "¿Desea limpiar el formulario?", "INFORMATION_MESSAGE", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
-        if(opcion == 0){
+        int opcion = JOptionPane.showOptionDialog(null, "¿Desea limpiar el formulario?", "Limpiar formulario", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[] { "Cancelar", "Aceptar"}, "Cancelar");
+        if(opcion == 1){
             tfNombreMedicamento.setText("");
             cbxTipoMedicamento.setSelectedIndex(-1);
             tfCantidadSolicitada.setText("");
@@ -289,38 +293,9 @@ public class Pedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        String regex = "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(tfNombreMedicamento.getText());
-        
-        if(!matcher.matches()){
-            JOptionPane.showMessageDialog(null, "El valor de nombre del medicamento no es correcto o contiene caracteres invalidos.", "Error de nombre", JOptionPane.ERROR_MESSAGE);            
-            return;
-        }
-        
-        if(cbxTipoMedicamento.getSelectedIndex() < 0){
-            JOptionPane.showMessageDialog(null, "Debe seleccionar un tipo de medicamento.", "Error de tipo de medicamento", JOptionPane.ERROR_MESSAGE);            
-            return;
-        }
-        
-        if(tfCantidadSolicitada.getText().isEmpty() || Integer.parseInt(tfCantidadSolicitada.getText()) <= 0){
-            JOptionPane.showMessageDialog(null, "Debe digitar una cantidad mayor a cero.", "Error de cantidad de medicamento", JOptionPane.ERROR_MESSAGE);            
-            return;
-        }
-        
-        if(!rdbCemefar.isSelected() && !rdbCofarma.isSelected() && !rdbEmpsephar.isSelected()){
-            JOptionPane.showMessageDialog(null, "Debe seleccionar el distribuidor del medicamento.", "Error de distribuidor", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        if(!chbPrincipal.isSelected() && !chbSecundaria.isSelected()){
-            JOptionPane.showMessageDialog(null, "Debe seleccionar al menos una sucursal solicitante.", "Error de sucursal", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-                
         PedidoDTO pedido = new PedidoDTO();
         pedido.setNombreMedicamento(tfNombreMedicamento.getText());
-        pedido.setTipoMedicamento(cbxTipoMedicamento.getSelectedItem().toString());
+        pedido.setTipoMedicamento((cbxTipoMedicamento.getSelectedItem() != null) ? cbxTipoMedicamento.getSelectedItem().toString() : null);
         pedido.setCantidadMedicamento(tfCantidadSolicitada.getText());
         if(rdbCemefar.isSelected()){
             pedido.setDistribuidor("Cemefar");
@@ -338,9 +313,13 @@ public class Pedidos extends javax.swing.JFrame {
             pedido.setSucursalSecundaria("Calle Alcazabilla n. 3");
         }
         
-        Resumen resumenPedido = new Resumen();
-        resumenPedido.setPedido(pedido);
-        resumenPedido.setVisible(true);
+        ValidaPedido validador = new ValidaPedido();
+        if(validador.validarPedido(pedido)){
+            Resumen resumenPedido = new Resumen();
+            resumenPedido.setPedido(pedido);
+            resumenPedido.setVisible(true);
+            clearForm();
+        }        
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void rdbCemefarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbCemefarActionPerformed
@@ -370,6 +349,15 @@ public class Pedidos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tfCantidadSolicitadaKeyTyped
 
+    private void clearForm(){
+        tfNombreMedicamento.setText("");
+        cbxTipoMedicamento.setSelectedIndex(-1);
+        tfCantidadSolicitada.setText("");
+        rdbGroupDistribuidor.clearSelection();
+        chbPrincipal.setSelected(false);
+        chbSecundaria.setSelected(false);
+    }
+    
     /**
      * @param args the command line arguments
      */

@@ -68,9 +68,9 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="299" max="32767" attributes="0"/>
-                  <Component id="btnCancelar" min="-2" pref="142" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                  <Component id="btnConfirmar" min="-2" pref="142" max="-2" attributes="0"/>
+                  <Component id="btnCancelar" min="-2" pref="157" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <Component id="btnConfirmar" min="-2" pref="157" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="296" max="-2" attributes="0"/>
               </Group>
           </Group>

@@ -4,6 +4,8 @@
 
 package com.achavez.farmaciaacg;
 
+import com.achavez.farmaciaacg.src.Pedidos;
+
 /**
  *
  * @author delph
@@ -11,6 +13,7 @@ package com.achavez.farmaciaacg;
 public class FarmaciaACG {
 
     public static void main(String[] args) {
-        
+        Pedidos pedidos = new Pedidos();
+        pedidos.setVisible(true);
     }
 }

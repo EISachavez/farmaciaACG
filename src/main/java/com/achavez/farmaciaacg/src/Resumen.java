@@ -18,7 +18,7 @@ public class Resumen extends javax.swing.JFrame {
      */
     public Resumen() {
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../resources/images/icon.png")).getImage());
+        //this.setIconImage(new ImageIcon(getClass().getResource("../resources/images/icon.png")).getImage());
     }
 
     /**
@@ -103,9 +103,9 @@ public class Resumen extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackgroundLayout.createSequentialGroup()
                 .addGap(0, 299, Short.MAX_VALUE)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
-                .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(296, 296, 296))
         );
         BackgroundLayout.setVerticalGroup(
@@ -141,6 +141,7 @@ public class Resumen extends javax.swing.JFrame {
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         System.out.println("Pedido enviado con las siguientes caracteristicas: ");
         this.pedido.pedidoToString();
+        this.dispose();
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     public void setPedido(PedidoDTO pedido){
