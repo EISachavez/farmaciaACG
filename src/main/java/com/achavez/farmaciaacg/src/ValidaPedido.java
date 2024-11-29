@@ -21,7 +21,7 @@ public class ValidaPedido {
             return false;
         }
         
-        if(pedido.getTipoMedicamento().trim().equalsIgnoreCase("--Seleccione--")){
+        if(pedido.getTipoMedicamento().trim().equalsIgnoreCase("-- Seleccione --")){
             generarError("Error de tipo de medicamento", "Debe seleccionar un tipo de medicamento.");
             return false;
         }
